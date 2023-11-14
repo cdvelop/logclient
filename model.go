@@ -1,3 +1,4 @@
 package logclient
 
-type Log struct{}
+type Log struct {
+}
