@@ -7,7 +7,7 @@ import (
 )
 
 // support: error, map[string]string
-func (Log) Log(message ...interface{}) interface{} {
+func (logClient) Log(message ...interface{}) interface{} {
 	var out []interface{}
 
 	for _, msg := range message {
