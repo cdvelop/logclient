@@ -12,14 +12,16 @@ func colorMessage(msg string) {
 	var class string
 
 	switch {
-	case strings.Contains(msg, "error") != 0:
+	case strings.Contains(strings.ToLowerCase(msg), "error") != 0:
 		class = "white-red"
-	case strings.Contains(msg, "tests") != 0:
+	case strings.Contains(strings.ToLowerCase(msg), "tests") != 0:
 		class = "white-blue"
-	case strings.Contains(msg, "OK") != 0:
+	case strings.Contains(strings.ToLowerCase(msg), "ok") != 0:
 		class = "white-blue"
-	case strings.Contains(msg, "test") != 0:
+	case strings.Contains(strings.ToLowerCase(msg), "test") != 0:
 		class = "blue"
+	case strings.Contains(strings.ToLowerCase(msg), "info") != 0:
+		class = "black-yellow"
 	}
 
 	var color string
