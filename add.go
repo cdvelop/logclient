@@ -1,8 +1,28 @@
 package logclient
 
-func Add() *logClient {
+import (
+	"syscall/js"
 
-	logger := &logClient{}
+	"github.com/cdvelop/model"
+)
 
-	return logger
+func AddLoggerAdapter() *logClient {
+
+	l := &logClient{
+		log: "log",
+	}
+
+	l.obj = &model.Object{
+		ObjectName: "logger",
+		Table:      l.log,
+		Fields: []model.Field{
+			{Name: "id_log", Legend: "id"},
+			{Name: l.log, Legend: l.log},
+		},
+		Module: &model.Module{ModuleName: "logger"},
+	}
+
+	js.Global().Set("logError", js.FuncOf(l.logError))
+
+	return l
 }
