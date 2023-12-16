@@ -9,6 +9,7 @@ import (
 func AddLoggerAdapter() *logClient {
 
 	l := &logClient{
+		id:  "id_log",
 		log: "log",
 	}
 
@@ -16,7 +17,7 @@ func AddLoggerAdapter() *logClient {
 		ObjectName: "logger",
 		Table:      l.log,
 		Fields: []model.Field{
-			{Name: "id_log", Legend: "id"},
+			{Name: l.id, Legend: "id"},
 			{Name: l.log, Legend: l.log},
 		},
 		Module: &model.Module{ModuleName: "logger"},
