@@ -6,11 +6,11 @@ import (
 	"github.com/cdvelop/model"
 )
 
-func (l *logClient) AddHandlerToRegisterLogsInDB(h *model.Handlers) {
+func (l *logClient) AddHandlerToRegisterLogsInDB(h *model.MainHandler) {
 	l.db = h.DataBaseAdapter
 	l.time = h.TimeAdapter
 
-	h.AddObjects(l.obj)
+	h.AddModules(l.obj.Module)
 
 }
 
