@@ -10,7 +10,7 @@ func (l *logClient) AddHandlerToRegisterLogsInDB(h *model.MainHandler) {
 	l.db = h.DataBaseAdapter
 	l.time = h.TimeAdapter
 
-	h.AddModules(l.obj.Module)
+	h.MainHandlerAddModules(l.obj.Module)
 
 }
 
