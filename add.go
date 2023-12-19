@@ -13,6 +13,8 @@ func AddLoggerAdapter() *logClient {
 		log: "log",
 	}
 
+	module := &model.Module{ModuleName: "logger"}
+
 	l.obj = &model.Object{
 		ObjectName: "logger",
 		Table:      l.log,
@@ -20,8 +22,9 @@ func AddLoggerAdapter() *logClient {
 			{Name: l.id, Legend: "id"},
 			{Name: l.log, Legend: l.log},
 		},
-		Module: &model.Module{ModuleName: "logger"},
+		Module: module,
 	}
+	module.AddObjectsToModule(l.obj)
 
 	js.Global().Set("logError", js.FuncOf(l.logError))
 
