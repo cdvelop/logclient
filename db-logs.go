@@ -18,7 +18,10 @@ func (l *logClient) logError(t js.Value, p []js.Value) interface{} {
 
 	if l.db != nil && l.time != nil {
 
-		date, hour := l.time.DateToDayHour(true)
+		date, hour := l.time.DateToDayHour(&model.DateFormat{
+			LeftDay:     false,
+			WithSeconds: true,
+		})
 
 		err := l.db.CreateObjectsInDB(l.obj.Table, false, map[string]string{
 			l.id:  date + "-" + hour,
