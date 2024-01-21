@@ -4,6 +4,7 @@ import (
 	"syscall/js"
 
 	"github.com/cdvelop/model"
+	"github.com/cdvelop/timetools"
 )
 
 func (l *logClient) AddHandlerToRegisterLogsInDB(h *model.MainHandler) {
@@ -18,7 +19,7 @@ func (l *logClient) logError(t js.Value, p []js.Value) interface{} {
 
 	if l.db != nil && l.time != nil {
 
-		date, hour := l.time.DateToDayHour(&model.DateFormat{
+		date, hour := l.time.DateToDayHour(&timetools.DateFormat{
 			LeftDay:     false,
 			WithSeconds: true,
 		})
