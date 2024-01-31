@@ -8,7 +8,7 @@ import (
 )
 
 // support: error, map[string]string
-func (logClient) Log(message ...interface{}) interface{} {
+func (logClient) Log(message ...interface{}) {
 	var out_any []interface{}
 	var out_string string
 	var space string
@@ -90,5 +90,5 @@ func (logClient) Log(message ...interface{}) interface{} {
 	if len(out_any) != 0 {
 		js.Global().Get("console").Call("log", out_any...)
 	}
-	return nil
+
 }
